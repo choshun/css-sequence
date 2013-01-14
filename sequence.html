@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html ng-app="sequencerModule">
+	<body>
+		<head>
+			<link href="css/reset.css" rel="stylesheet" type="text/css">
+			<link href="css/sequencer.css" rel="stylesheet" type="text/css">
+		</head>
+
+		<div ng-controller="Sequencer" id="sequencer">
+
+			<ul id="layers">
+				<li ng-repeat="layer in layers | orderBy:layer.order">
+					<div class="layer" style="{{layer.css}}"></div>
+					<input class="hidden" ng-model="layer.css"> 
+					<div class="sequencer"></div>
+				</li>
+			</ul>
+			<div class="transport-wrapper">
+
+				<div class="hidden">Time elapsed: <input id="time-elapsed" ng-model="timeElapsed" ng-model-instant></div>
+
+				<button class="button hidden" id="add-transition" ng-click="addTransition()">Add Transition</button>
+				
+				<ul id="transitions">
+					<li ng-repeat="transition in transitions | orderBy:transition.time ">
+						<input ng-model="transition.layer" class="layer hidden" />
+						<input ng-model="transition.css" class="css hidden" />
+						<input ng-model="transition.time" class="time hidden" />
+						<input ng-model="transition.id" class="id hidden" />
+					</li>
+				</ul>
+
+				<div id="transport-layers">
+					<button id="add-layer" class="button" ng-click="addLayer()">+</button>
+					<div id="ticker"></div>
+					<ul>
+						<li class="layer" ng-repeat="layer in layers | orderBy:layer.order">
+							
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.7.2-min.js"></script>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/underscore.js"></script>
+		
+		<!-- initializer -->
+		<script type="text/javascript" src="js/sequencer.js"></script>
+		
+		<!-- modules -->
+		<script type="text/javascript" src="js/transport.js"></script>
+		<script type="text/javascript" src="js/grid.js"></script>
+		
+	</body>
+</html>
