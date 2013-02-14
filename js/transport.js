@@ -47,7 +47,7 @@ var SQNC = SQNC || {};
 	    }
 		
 	    function play(){
-	    	var diff = (new Date().getTime() - start) - time;
+	    	var diff = SQNC.isPlaying ? 0 : ((new Date().getTime() - start) - time);
 			window.setTimeout(grain, (settings.interval - diff));
 	    }
 		

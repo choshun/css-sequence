@@ -58,13 +58,11 @@ var SQNC = SQNC || {};
 
 		function checkSpacebarStatus(e){
 			if (e.which === 32) {
-				
+				e.preventDefault();
 				if(SQNC.isPlaying === true){
-					console.log('stopped');
 					SQNC.isPlaying = false;
 					$body.removeClass('playing');
 				} else {
-					console.log('playing');
 					SQNC.isPlaying = true;
 					$body.addClass('playing');
 					SQNC.transport.play();
